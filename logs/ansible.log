@@ -1,0 +1,542 @@
+2021-10-28 13:28:13,218 p=784550 u=tiago n=ansible | Using /home/tiago/repos/tiago/MobEAD/iac/ansible.cfg as config file
+2021-10-28 13:28:13,227 p=784550 u=tiago n=ansible | host_list declined parsing /home/tiago/repos/tiago/MobEAD/iac/hosts as it did not pass its verify_file() method
+2021-10-28 13:28:13,228 p=784550 u=tiago n=ansible | script declined parsing /home/tiago/repos/tiago/MobEAD/iac/hosts as it did not pass its verify_file() method
+2021-10-28 13:28:13,228 p=784550 u=tiago n=ansible | auto declined parsing /home/tiago/repos/tiago/MobEAD/iac/hosts as it did not pass its verify_file() method
+2021-10-28 13:28:13,232 p=784550 u=tiago n=ansible | Parsed /home/tiago/repos/tiago/MobEAD/iac/hosts inventory source with ini plugin
+2021-10-28 13:28:13,364 p=784550 u=tiago n=ansible | redirecting (type: modules) ansible.builtin.win_feature to ansible.windows.win_feature
+2021-10-28 13:28:13,371 p=784550 u=tiago n=ansible | Skipping callback 'default', as we already have a stdout callback.
+2021-10-28 13:28:13,371 p=784550 u=tiago n=ansible | Skipping callback 'minimal', as we already have a stdout callback.
+2021-10-28 13:28:13,371 p=784550 u=tiago n=ansible | Skipping callback 'oneline', as we already have a stdout callback.
+2021-10-28 13:28:13,371 p=784550 u=tiago n=ansible | PLAYBOOK: install_iis.yaml ************************************************************************************************************************************************************
+2021-10-28 13:28:13,371 p=784550 u=tiago n=ansible | 1 plays in install_iis.yaml
+2021-10-28 13:28:13,375 p=784550 u=tiago n=ansible | PLAY [Install IIS] ********************************************************************************************************************************************************************
+2021-10-28 13:28:13,384 p=784550 u=tiago n=ansible | TASK [Gathering Facts] ****************************************************************************************************************************************************************
+2021-10-28 13:28:13,391 p=784555 u=tiago n=ansible | redirecting (type: modules) ansible.builtin.setup to ansible.windows.setup
+2021-10-28 13:28:13,402 p=784555 u=tiago n=ansible | Using module file /home/tiago/.ansible/collections/ansible_collections/ansible/windows/plugins/modules/setup.ps1
+2021-10-28 13:28:13,402 p=784555 u=tiago n=ansible | Pipelining is enabled.
+2021-10-28 13:28:13,403 p=784555 u=tiago n=ansible | <15.228.6.92> ESTABLISH WINRM CONNECTION FOR USER: Administrator on PORT 5986 TO 15.228.6.92
+2021-10-28 13:28:13,648 p=784555 u=tiago n=ansible | EXEC (via pipeline wrapper)
+2021-10-28 13:28:18,941 p=784550 u=tiago n=ansible | ok: [15.228.6.92]
+2021-10-28 13:28:18,953 p=784550 u=tiago n=ansible | META: ran handlers
+2021-10-28 13:28:18,963 p=784550 u=tiago n=ansible | TASK [win_feature] ********************************************************************************************************************************************************************
+2021-10-28 13:28:18,980 p=784601 u=tiago n=ansible | redirecting (type: modules) ansible.builtin.win_feature to ansible.windows.win_feature
+2021-10-28 13:28:19,023 p=784601 u=tiago n=ansible | Using module file /home/tiago/.ansible/collections/ansible_collections/ansible/windows/plugins/modules/win_feature.ps1
+2021-10-28 13:28:19,023 p=784601 u=tiago n=ansible | Pipelining is enabled.
+2021-10-28 13:28:19,024 p=784601 u=tiago n=ansible | <15.228.6.92> ESTABLISH WINRM CONNECTION FOR USER: Administrator on PORT 5986 TO 15.228.6.92
+2021-10-28 13:28:19,378 p=784601 u=tiago n=ansible | EXEC (via pipeline wrapper)
+2021-10-28 13:35:52,493 p=784550 u=tiago n=ansible | changed: [15.228.6.92] => {
+    "changed": true,
+    "exitcode": "Success",
+    "feature_result": [
+        {
+            "display_name": "ASP.NET 4.7",
+            "id": 429,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": ".NET Framework 3.5 (includes .NET 2.0 and 3.0)",
+            "id": 220,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": ".NET Framework 3.5 Features",
+            "id": 475,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "Application Development",
+            "id": 147,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "Application Initialization",
+            "id": 445,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "ASP",
+            "id": 150,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "ASP.NET 3.5",
+            "id": 148,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "ASP.NET 4.7",
+            "id": 413,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "Basic Authentication",
+            "id": 163,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "IIS Client Certificate Mapping Authentication",
+            "id": 167,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "Centralized SSL Certificate Support",
+            "id": 446,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "CGI",
+            "id": 151,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "Client Certificate Mapping Authentication",
+            "id": 166,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "Common HTTP Features",
+            "id": 141,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "Custom Logging",
+            "id": 160,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "WebDAV Publishing",
+            "id": 314,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "Default Document",
+            "id": 143,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "Digest Authentication",
+            "id": 165,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "Directory Browsing",
+            "id": 144,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "Dynamic Content Compression",
+            "id": 173,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "Request Filtering",
+            "id": 169,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "FTP Extensibility",
+            "id": 317,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "FTP Server",
+            "id": 184,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "FTP Service",
+            "id": 316,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "Health and Diagnostics",
+            "id": 155,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "HTTP Errors",
+            "id": 145,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "HTTP Logging",
+            "id": 156,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "HTTP Redirection",
+            "id": 146,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "Tracing",
+            "id": 159,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "Server Side Includes",
+            "id": 154,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "IP and Domain Restrictions",
+            "id": 170,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "ISAPI Extensions",
+            "id": 152,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "ISAPI Filters",
+            "id": 153,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "IIS 6 Management Console",
+            "id": 182,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "IIS 6 Scripting Tools",
+            "id": 181,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "Logging Tools",
+            "id": 157,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "IIS 6 Metabase Compatibility",
+            "id": 179,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "IIS 6 Management Compatibility",
+            "id": 178,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "IIS Management Console",
+            "id": 175,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "Management Service",
+            "id": 177,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "Management Tools",
+            "id": 174,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": ".NET Extensibility 3.5",
+            "id": 149,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": ".NET Extensibility 4.7",
+            "id": 414,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "ODBC Logging",
+            "id": 161,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "Performance",
+            "id": 171,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "Request Monitor",
+            "id": 158,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "IIS Management Scripts and Tools",
+            "id": 176,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "Security",
+            "id": 162,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "Web Server (IIS)",
+            "id": 2,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "Static Content Compression",
+            "id": 172,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "Static Content",
+            "id": 142,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "URL Authorization",
+            "id": 168,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "Web Server",
+            "id": 140,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "WebSocket Protocol",
+            "id": 447,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "Windows Authentication",
+            "id": 164,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        },
+        {
+            "display_name": "IIS 6 WMI Compatibility",
+            "id": 180,
+            "message": [],
+            "reboot_required": false,
+            "restart_needed": false,
+            "skip_reason": "NotSkipped",
+            "success": true
+        }
+    ],
+    "reboot_required": false,
+    "success": true
+}
+2021-10-28 13:35:52,500 p=784550 u=tiago n=ansible | META: ran handlers
+2021-10-28 13:35:52,503 p=784550 u=tiago n=ansible | META: ran handlers
+2021-10-28 13:35:52,504 p=784550 u=tiago n=ansible | PLAY RECAP ****************************************************************************************************************************************************************************
+2021-10-28 13:35:52,504 p=784550 u=tiago n=ansible | 15.228.6.92                : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
