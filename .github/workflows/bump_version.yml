@@ -1,0 +1,28 @@
+
+name: Bump version
+on: workflow_dispatch
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Python
+        uses: actions/setup-python@v2.2.2
+      - name: Config
+        run: |
+          pip install -U git-semver
+          git config --global user.email "pipeline@withleaf.io"
+          git config --global user.name "{{ github.repository_owner }}"
+          git fetch --all
+          git fetch --tags
+      - name: Create Tag
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |   
+          TAG=""
+          if [ $(git log -1 --pretty=%B | grep -E ^feature\: | wc -l) -gt 0 ]; then TAG=$(git semver --next-minor); fi
+          if [ $(git log -1 --pretty=%B | grep -E ^breaking\: | wc -l) -gt 0 ]; then TAG=$(git semver --next-major); fi
+          if [ -z $TAG ]; then TAG=$(git semver --next-patch); fi
+          echo "Creating tag: "$TAGq
+          git tag -a v$TAG -m "$(git log -1 --pretty=%B)"
+          git push --tags

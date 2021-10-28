@@ -1,0 +1,7 @@
+ansible_user: windows_username
+
+ansible_password: SecretPasswordGoesHere
+
+ansible_port: 5986
+
+ansible_connection: winrm
