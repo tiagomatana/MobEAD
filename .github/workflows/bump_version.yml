@@ -28,7 +28,6 @@ jobs:
           TAG=""
 
           if [ $(git tag | wc -l) -gt 0 ]; then
-            TAG=$(git describe --tags --abbrev=0)
             if [ $(git log -1 --pretty=%B | grep -E ^feature\: | wc -l) -gt 0 ]; then 
               TAG=$(git semver --next-minor) 
             elif [ $(git log -1 --pretty=%B | grep -E ^breaking\: | wc -l) -gt 0 ]; then 
