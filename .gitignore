@@ -340,5 +340,6 @@ ASALocalRun/
 healthchecksdb
 
 **/.terraform/
-**/.terraform/terraform.tfstate*
+**/terraform.tfstate*
+**/.terraform/terraform.tfstate
 **/.terraform.lock.hcl
