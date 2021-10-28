@@ -26,9 +26,10 @@ jobs:
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |   
           TAG=""
+          echo ${{ github.event.inputs.version }}
           if [ $(git log -1 --pretty=%B | grep -E ^feature\: | wc -l) -gt 0 ]; then TAG=$(git semver --next-minor); fi
           if [ $(git log -1 --pretty=%B | grep -E ^breaking\: | wc -l) -gt 0 ]; then TAG=$(git semver --next-major); fi
           if [ -z $TAG ]; then TAG=$(git semver --next-patch); fi
-          echo "Creating tag: "$TAGq
-          git tag -a v$TAG -m "$(git log -1 --pretty=%B)"
+          echo "Creating tag: "$TAG
+          git tag -a $TAG -m "$(git log -1 --pretty=%B)"
           git push --tags
