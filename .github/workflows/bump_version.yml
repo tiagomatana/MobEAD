@@ -5,7 +5,7 @@ on:
     inputs:
       version:
         description: "Semantic version pre-stage"
-        required: true
+        required: false
         default: "0.0.0"
 jobs:
   build:

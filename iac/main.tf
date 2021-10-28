@@ -110,24 +110,9 @@ resource "aws_ssm_activation" "foo" {
   depends_on         = [aws_iam_role_policy_attachment.test_attach]
 }
 
-data "aws_ami" "windows" {
-    most_recent = true
- 
-    filter {
-        name = "name"
-        values = ["Windows_Server-2019-English-Full-Base-*"]
-    }
-
-    owners = [ "amazon" ]
-}
-
-resource "aws_key_pair" "pubkey" {
-    key_name = "tiago-windows"
-    public_key = file("~/.ssh/id_rsa.pub")
-}
 
 resource "aws_instance" "webserver" {
-    ami = "ami-0b13c507c1f3d8a2f" #data.aws_ami.windows.image_id #"ami-06ab8fe950abb04f5" #"ami-0b13c507c1f3d8a2f"
+    ami = "ami-06ab8fe950abb04f5" # "ami-0b13c507c1f3d8a2f" 
     instance_type = "t2.micro"
     security_groups = [ aws_security_group.sg-webserver.name ]
     key_name = "mobead-tiago"
@@ -161,35 +146,3 @@ output "eip" {
     value = aws_eip.elasticip.public_ip
 }
 
-output "windows" {
-    value = data.aws_ami.windows.image_id
-}
-
-resource "time_sleep" "wait_120_seconds" {
-  depends_on = [aws_instance.webserver]
-
-  create_duration = "120s"
-}
-resource "null_resource" "hosts" {
-    provisioner "local-exec" {
-        command = "echo '${aws_eip.elasticip.public_ip}' > ./hosts"
-    }
-
-    depends_on = [
-      time_sleep.wait_120_seconds
-    ]
-}
-
-# resource "null_resource" "playbook" {
-#     provisioner "local-exec" {
-#         command = "ansible-playbook -i hosts install_iis.yaml"
-#     }
-
-#     depends_on = [
-#       null_resource.hosts
-#     ]
-# }
-
-output "arn" {
-    value = aws_instance.webserver.arn
-}

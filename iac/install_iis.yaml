@@ -1,11 +1,9 @@
 ---
-- name: Install ISS
-  hosts: all
+- name: Install IIS
+  hosts: windows
   tasks:
-    - name: Install IIS
-      win_feature:
-        name: "Web-server"
-        state: present
-        restart: yes
-        include_sub_features: yes
-        include_management_tools: yes
+   - win_feature:
+       name: "web-server"
+       state: present
+       include_sub_features: yes
+       include_management_tools: yes
