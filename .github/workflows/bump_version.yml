@@ -31,7 +31,7 @@ jobs:
             TAG=$(git describe --tags --abbrev=0)
             if [ $(git log -1 --pretty=%B | grep -E ^feature\: | wc -l) -gt 0 ]; then 
               TAG=$(git semver --next-minor) 
-            elseif [ $(git log -1 --pretty=%B | grep -E ^breaking\: | wc -l) -gt 0 ]; then 
+            elif [ $(git log -1 --pretty=%B | grep -E ^breaking\: | wc -l) -gt 0 ]; then 
               TAG=$(git semver --next-major)
             else
               TAG=$(git semver --next-patch)
