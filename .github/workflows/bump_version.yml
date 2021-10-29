@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: "Semantic version pre-stage"
-        required: false
-        default: "0.0.0"
+        description: "Semantic version: \n (p) - PATCH\n (m) - MINOR\n(M) - MAJOR"
+        required: true
+        default: "p"
 jobs:
   build:
     runs-on: ubuntu-latest
