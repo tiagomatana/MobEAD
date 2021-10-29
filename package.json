@@ -1,0 +1,24 @@
+{
+  "name": "MobEAD",
+  "version": "1.0.1",
+  "description": "",
+  "main": "teste.js",
+  "dependencies": {
+    "semver": "^7.3.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tiagomatana/MobEAD.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tiagomatana/MobEAD/issues"
+  },
+  "homepage": "https://github.com/tiagomatana/MobEAD#readme"
+}
