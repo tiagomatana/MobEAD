@@ -27,12 +27,11 @@ jobs:
           pip install semver
           git config --global user.email "tiago.matana@gmail.com"
           git config --global user.name "Tiago Matana"
-          git fetch origin
       - name: Create Tag
         env:
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |   
-          git fetch --all --tags
+          git fetch --tags
           TAG=""
           SEMANTIC=${{ github.event.inputs.semantic }}
           VERSION=$(git describe --tags $(git rev-list --tags --max-count=1))
