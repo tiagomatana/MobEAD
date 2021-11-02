@@ -3,10 +3,10 @@ name: Bump version
 on: 
   workflow_dispatch:
     inputs:
-      version:
-        description: "Semantic version: \n (p) - PATCH\n (m) - MINOR\n(M) - MAJOR"
+      semantic:
+        description: "Semantic version: (patch, minor, major)"
         required: true
-        default: "p"
+        default: "patch"
   push:
     branches:
       - dev
