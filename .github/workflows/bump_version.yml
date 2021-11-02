@@ -21,14 +21,13 @@ jobs:
       - name: Config
         run: |
           pip3 install semver
-          git config --global user.email "pipeline@withleaf.io"
-          git config --global user.name "Leaf"
-          git fetch --all
-          git fetch --tags
+          git config --global user.email "tiago.matana@gmail.com"
+          git config --global user.name "Tiago Matana"
       - name: Create Tag
         env:
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |   
+          git fetch --all -tags
           TAG=""
           SEMANTIC=${{ github.event.inputs.semantic }}
           VERSION=$(git describe --tags --abbrev=0)
