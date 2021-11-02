@@ -7,6 +7,10 @@ on:
         description: "Semantic version: \n (p) - PATCH\n (m) - MINOR\n(M) - MAJOR"
         required: true
         default: "p"
+  push:
+    branches:
+      - dev
+      - stg
 jobs:
   build:
     runs-on: ubuntu-latest
