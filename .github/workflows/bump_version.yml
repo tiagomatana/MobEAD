@@ -17,8 +17,9 @@ jobs:
       - name: Config
         run: |
           pip install -U git-semver
+          pip install -U semver
           git config --global user.email "pipeline@withleaf.io"
-          git config --global user.name "{{ github.repository_owner }}"
+          git config --global user.name "Leaf"
           git fetch --all
           git fetch --tags
       - name: Create Tag
@@ -26,19 +27,21 @@ jobs:
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |   
           TAG=""
+          SEMANTIC=${{ github.event.inputs.semantic }}
+          VERSION=$(git describe --tags --abbrev=0)
 
           if [ $(git tag | wc -l) -gt 0 ]; then
-            if [ $(git log -1 --pretty=%B | grep -E ^feature\: | wc -l) -gt 0 ]; then 
-              TAG=$(git semver --next-minor) 
-            elif [ $(git log -1 --pretty=%B | grep -E ^breaking\: | wc -l) -gt 0 ]; then 
-              TAG=$(git semver --next-major)
+            if [ $(git branch | grep -E master | wc -l) -gt 0 ]; then 
+              TAG=$(pysemver bump $SEMANTIC $VERSION) 
+            elif [ $(git branch | grep -E stg | wc -l) -gt 0 ]; then 
+              TAG=$(pysemver bump prerelease $VERSION)
             else
-              TAG=$(git semver --next-patch)
+              TAG=$(pysemver bump build $VERSION)
             fi
             echo "Creating tag: "$TAG
           else
-            echo "No tags found. Creating tag: ${{ github.event.inputs.version }}"
-            TAG=${{ github.event.inputs.version }}
+            echo "No tags found. Creating tag: 0.0.1"
+            TAG="0.0.1"
           fi
           git tag -a $TAG -m "$(git log -1 --pretty=%B)"
           git push --tags
