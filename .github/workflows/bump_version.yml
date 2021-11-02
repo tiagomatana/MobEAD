@@ -20,9 +20,10 @@ jobs:
         uses: actions/setup-python@v2.2.2
       - name: Config
         run: |
-          pip3 install semver
+          pip install semver
           git config --global user.email "tiago.matana@gmail.com"
           git config --global user.name "Tiago Matana"
+          git fetch origin
       - name: Create Tag
         env:
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -30,7 +31,7 @@ jobs:
           git fetch --all --tags
           TAG=""
           SEMANTIC=${{ github.event.inputs.semantic }}
-          VERSION=$(git describe --tags --abbrev=0)
+          VERSION=$(git describe --tags $(git rev-list --tags --max-count=1))
 
           if [ $(git tag | wc -l) -gt 0 ]; then
             if [ $(git branch | grep -E master | wc -l) -gt 0 ]; then 
