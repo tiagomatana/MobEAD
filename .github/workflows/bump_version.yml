@@ -20,7 +20,7 @@ jobs:
         uses: actions/setup-python@v2.2.2
       - name: Config
         run: |
-          pip install semver
+          pip3 install semver
           git config --global user.email "pipeline@withleaf.io"
           git config --global user.name "Leaf"
           git fetch --all
