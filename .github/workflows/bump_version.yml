@@ -35,20 +35,30 @@ jobs:
           TAG=""
           SEMANTIC=${{ github.event.inputs.semantic }}
           VERSION=$(git describe --tags $(git rev-list --tags --max-count=1))
+          BRANCH=$(git branch --show-current)
 
-          if [ $(git tag | wc -l) -gt 0 ]; then
-            if [ $(git branch | grep -E master | wc -l) -gt 0 ]; then 
-              TAG=$(pysemver bump $SEMANTIC $VERSION) 
-            elif [ $(git branch | grep -E stg | wc -l) -gt 0 ]; then 
-              TAG=$(pysemver bump prerelease $VERSION)
-            else
+          case $BRANCH in
+            dev)
+              if [ $(echo $VERSION | grep -E "rc" | wc -l) -gt 0]; then
+                VERSION=$(pysemver nextver $VERSION $SEMANTIC)
+              fi
               TAG=$(pysemver bump build $VERSION)
-            fi
-            echo "Creating tag: "$TAG
-          else
-            echo "No tags found. Creating tag: 0.0.1"
-            TAG="0.0.1"
-          fi
+              ;;
+            stg)
+              if [ $(echo $VERSION | grep -E "build" | wc -l) -gt 0]; then
+                VERSION=$(pysemver nextver $VERSION $SEMANTIC)
+              fi
+              TAG=$(pysemver bump prerelease $VERSION)
+              ;;
+            master)
+              TAG=$(pysemver bump $SEMANTIC $VERSION)
+              ;;
+            *)
+              echo "No tags found. Creating tag: 0.0.1"
+              TAG="0.0.1"
+              ;;
+          esac
+              
           git tag -a $TAG -m "$(git log -1 --pretty=%B)"
           git push --tags
 
