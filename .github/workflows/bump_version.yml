@@ -30,7 +30,10 @@ jobs:
           git fetch --tags
           TAG=""
           SEMANTIC=${{ github.event.inputs.semantic }}
-          VERSION=$(git describe --tags $(git rev-list --tags --max-count=1))
+          VERSION="0.0.0"
+          if [ $(git tag -l | wc -l) -gt 0]; then
+            VERSION=$(git describe --tags $(git rev-list --tags --max-count=1))
+          fi
           BRANCH=$(git branch --show-current)
 
           case $BRANCH in
